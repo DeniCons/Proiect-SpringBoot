@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionare Cărți</title>
+</head>
+<body>
+<h1 th:text="${mesaj}"></h1>
+
+<form action="/adauga" method="post">
+    ISBN: <input type="text" name="isbn" /><br/>
+    Titlu: <input type="text" name="titlu" /><br/>
+    Autor: <input type="text" name="autor" /><br/>
+    <button type="submit">Adauga</button>
+</form>
+
+<form action="/modifica" method="post">
+    ISBN: <input type="text" name="isbn" /><br/>
+    Titlu nou: <input type="text" name="titlu" /><br/>
+    Autor nou: <input type="text" name="autor" /><br/>
+    <button type="submit">Modifica</button>
+</form>
+
+<form action="/sterge" method="post">
+    ISBN: <input type="text" name="isbn" /><br/>
+    <button type="submit">Sterge</button>
+</form>
+
+<form action="/filtreaza" method="post">
+    Autor: <input type="text" name="autor" /><br/>
+    <button type="submit">Filtreaza</button>
+</form>
+
+<form action="/filtreaza2" method="post">
+    <p>Filtrează după autor și titlu:</p>
+    Autor: <input type="text" name="autor" /><br/>
+    Titlu: <input type="text" name="titlu" /><br/>
+    <button type="submit">Filtrează după Autor și Titlu</button>
+</form>
+
+<h2>Lista cartilor:</h2>
+
+ 
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Titlu</th>
+            <th>Autor</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="c : ${carti}">
+            <td th:text="${c.isbn}"></td>
+            <td th:text="${c.titlu}"></td>
+            <td th:text="${c.autor}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
